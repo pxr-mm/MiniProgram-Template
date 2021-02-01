@@ -1,6 +1,6 @@
 <template>
-	<view class="">
-		我的token：{{user}}
+	<view class="main">
+		我的user：{{user}}
 	</view>
 </template>
 
@@ -17,8 +17,8 @@
 	}
 </script>
 
-<style>
-	page {
+<style scoped>
+	.main {
 		color: #007AFF;
 	}
 </style>

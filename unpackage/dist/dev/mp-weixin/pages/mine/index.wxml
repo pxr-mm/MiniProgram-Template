@@ -1,1 +1,1 @@
-<view>{{'我的token：'+user+''}}</view>
+<view class="main data-v-4bd6864f">{{'我的user：'+user+''}}</view>
