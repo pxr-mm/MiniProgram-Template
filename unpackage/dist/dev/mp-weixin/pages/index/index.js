@@ -99,7 +99,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  uButton: function() {
+    return __webpack_require__.e(/*! import() | node-modules/uview-ui/components/u-button/u-button */ "node-modules/uview-ui/components/u-button/u-button").then(__webpack_require__.bind(null, /*! uview-ui/components/u-button/u-button.vue */ 53))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -142,25 +146,113 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
-var _api = __webpack_require__(/*! ../../http/api.js */ 20);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _api = __webpack_require__(/*! ../../http/api.js */ 20);
+
+
+
+
+
+var _vuex = __webpack_require__(/*! vuex */ 51);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
+
 {
   data: function data() {
     return {
-      title: 'Hello' };
+      title: 'Hello',
+      IsShow: true,
+      user: '' };
 
   },
   onLoad: function onLoad() {
     console.log("打印");
     this.initData();
-  },
 
-  methods: {
+  },
+  onShow: function onShow() {
+    // 触发全局中的方法setUser（App.vue中globalData定义）
+    getApp().globalData.setUser();
+    this.user = getApp().globalData.user;
+  },
+  // 使用计算属性读取vuex中的返回状态
+  computed: _objectSpread({},
+
+
+
+
+
+
+  (0, _vuex.mapState)(['token', 'count'])),
+
+
+  methods: _objectSpread(_objectSpread(_objectSpread({},
+
+  (0, _vuex.mapMutations)(['setToken', 'setCount'])),
+
+  (0, _vuex.mapActions)(['getRecommendList'])), {}, {
+    changCount: function changCount() {
+      // 更改store中的值，方法一：利用辅助函数mapMutations映射
+      // this.setCount(this.count+1)
+
+      // 方法2：this.$store.commit("方法名",传参)
+      this.$store.commit('setCount', this.count + 2);
+    },
+    changToken: function changToken() {
+      // 触发store中的异步方法1:辅助函数映射
+      // this.getRecommendList()
+
+      // 方法2：this.$store.dispatch()
+      this.$store.dispatch('getRecommendList').then(function (res) {
+        console.log(res, "触发vuex中的异步方法");
+      });
+
+
+
+    },
+
+    changUser: function changUser() {
+      // this.IsShow = !this.IsShow
+      getApp().globalData.user = getApp().globalData.user + 1;
+      this.user = getApp().globalData.user;
+    },
+
+
+    // 数据初始化
     initData: function initData() {return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res, res2;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-                  (0, _api.getRecommendList)());case 2:res = _context.sent;
-                console.log(res, "请求");_context.next = 6;return (
-                  (0, _api.getDiscussList)({ cur_offset: 0 }));case 6:res2 = _context.sent;
-                console.log(res2, 22222);case 8:case "end":return _context.stop();}}}, _callee);}))();
-    } } };exports.default = _default;
+                  (0, _api.getRecommendList)());case 2:res = _context.sent;_context.next = 5;return (
+
+                  (0, _api.getDiscussList)({
+                    cur_offset: 0 }));case 5:res2 = _context.sent;case 6:case "end":return _context.stop();}}}, _callee);}))();
+
+
+    } }) };exports.default = _default;
 
 /***/ }),
 /* 17 */,

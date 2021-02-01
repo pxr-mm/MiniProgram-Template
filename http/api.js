@@ -12,8 +12,8 @@ export function getDiscussList(data){
 		'/discuss/recommend_list',
 		'POST',
 		data,
-		{
-			headers:"application/json"
-		}
+		// {
+		// 	headers:"application/json"
+		// }
 	)
 }

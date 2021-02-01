@@ -24,13 +24,14 @@ export function request (url, method, data, header) {
 	if (header) {
 		_header = {
 			// 'Authorization': TOKEN,
-			'flag': 'wechat',
+			// 'flag': 'wechat',
 			...header
 		}
+		console.log(_header,"请求头")
 	} else {
 		_header = {
 			// 'Authorization': TOKEN,
-			'flag': 'wechat',
+			// 'flag': 'wechat',
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}
@@ -42,41 +43,33 @@ export function request (url, method, data, header) {
 	}
 	return uni.request({
 		url: _tempUrl,
-		method,
+		method:method || 'GET',
 		header: _header,
 		data
 	}).then(resp => {
 		uni.hideLoading()
 		let [err, res] = resp
-		// if (res.statusCode !== 200) {
-		// 	uni.showToast({
-		// 		title: '请求失败',
-		// 		icon: "none",
-		// 		duration: 2000
-		// 	})
-		// 	return err
-		// } else {
-			// if (res.data.code !== 0 && res.data.code !== 200 && res.data.code !== 20000 && res.data.code !== 201001) {
-			// 	// uni.showToast({
-			// 	// 	title: res.data.message || '服务异常',
-			// 	// 	icon: "none"
-			// 	// })
-			// 	return Promise.reject(res.data)
-			// } else {
-			// 	return res.data
-			// }
-		// }
-		
-		if (res.code !== 0 ) {
-			// uni.showToast({
-			// 	title: res.data.message || '服务异常',
-			// 	icon: "none"
-			// })
-			return res
-			// return Promise.reject(res.data)
+		if (res.statusCode !== 200) {
+			uni.showToast({
+				title: '请求失败',
+				icon: "none",
+				duration: 2000
+			})
+			return err
 		} else {
-			return res.data
+			// if (res.data.code !== 0 && res.data.code !== 200 && res.data.code !== 20000 && res.data.code !== 201001) {
+			if (res.data.code !== 1 ) {
+				// uni.showToast({
+				// 	title: res.data.message || '服务异常',
+				// 	icon: "none"
+				// })
+				return Promise.reject(res.data)
+			} else {
+				return res.data
+			}
 		}
+		
+		
 		
 	}).catch(error => {
 		uni.showToast({
