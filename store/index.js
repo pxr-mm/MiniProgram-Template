@@ -6,8 +6,9 @@
  
  export default new Vuex.Store({
 	 state:{
-		 token:11111,
-		 count:0
+		 token:'',
+		 UserInfo:{},
+		 count:0,
 	 },
 	 // 同步
 	 mutations:{
@@ -16,6 +17,9 @@
 		 },
 		 setCount(state,val){
 		 	state.count = val
+		 },
+		 setUserInfo(state,val){
+			 state.UserInfo = val
 		 },
 	 },
 	 // 异步方法(可做数据请求)

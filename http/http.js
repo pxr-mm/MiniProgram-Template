@@ -3,6 +3,7 @@
 // const whiteList = ['/api/supervise/wechat/loginMp']
 
 const BASE_URL = "https://api.xiakelab.com"
+// const BASE_URL = "http://192.168.1.183"
 export { BASE_URL}
 
 /**
@@ -27,7 +28,7 @@ export function request (url, method, data, header) {
 			// 'flag': 'wechat',
 			...header
 		}
-		console.log(_header,"请求头")
+		// console.log(_header,"请求头")
 	} else {
 		_header = {
 			// 'Authorization': TOKEN,
@@ -49,6 +50,7 @@ export function request (url, method, data, header) {
 	}).then(resp => {
 		uni.hideLoading()
 		let [err, res] = resp
+		console.log(res,'拦截res')
 		if (res.statusCode !== 200) {
 			uni.showToast({
 				title: '请求失败',

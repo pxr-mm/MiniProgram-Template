@@ -105,11 +105,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-button/u-button":1};
+/******/ 		var cssChunks = {"node-modules/uview-ui/components/u-button/u-button":1,"node-modules/uview-ui/components/u-avatar/u-avatar":1,"node-modules/uview-ui/components/u-image/u-image":1,"node-modules/uview-ui/components/u-popup/u-popup":1,"node-modules/uview-ui/components/u-icon/u-icon":1,"node-modules/uview-ui/components/u-mask/u-mask":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"node-modules/uview-ui/components/u-button/u-button":"node-modules/uview-ui/components/u-button/u-button"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/login-pop":"components/login-pop","node-modules/uview-ui/components/u-button/u-button":"node-modules/uview-ui/components/u-button/u-button","node-modules/uview-ui/components/u-avatar/u-avatar":"node-modules/uview-ui/components/u-avatar/u-avatar","node-modules/uview-ui/components/u-image/u-image":"node-modules/uview-ui/components/u-image/u-image","node-modules/uview-ui/components/u-popup/u-popup":"node-modules/uview-ui/components/u-popup/u-popup","node-modules/uview-ui/components/u-icon/u-icon":"node-modules/uview-ui/components/u-icon/u-icon","node-modules/uview-ui/components/u-mask/u-mask":"node-modules/uview-ui/components/u-mask/u-mask"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {

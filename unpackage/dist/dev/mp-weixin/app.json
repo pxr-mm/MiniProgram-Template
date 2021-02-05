@@ -26,5 +26,8 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {
+    "login-pop": "/components/login-pop"
+  },
+  "sitemapLocation": "sitemap49.json"
 }

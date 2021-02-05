@@ -10,7 +10,7 @@
 			</view>
 			<view class="contents">
 				<view class="">
-					3.vuex使用：
+					3.vuex封装与使用：
 					<view class="">
 						count:{{count}} token:{{token}}
 					</view>
